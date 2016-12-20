@@ -9,7 +9,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
 
   static propTypes = {
     children: React.PropTypes.node,
-    loadData: React.PropTypes.object,
+    loadData: React.PropTypes.func,
   };
 
   componentWillMount() {
