@@ -1,10 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+import {
+  loadData,
+} from '../App/actions';
+
+class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     children: React.PropTypes.node,
+    loadData: React.PropTypes.object,
   };
+
+  componentWillMount() {
+    this.props.loadData();
+  }
 
   render() {
     return (
@@ -14,3 +24,12 @@ export default class App extends React.PureComponent { // eslint-disable-line re
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    loadData: () => dispatch(loadData()),
+    dispatch,
+  };
+}
+
+export default connect(null, mapDispatchToProps)(App);

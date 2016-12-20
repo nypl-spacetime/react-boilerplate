@@ -1,3 +1,27 @@
+import { createSelector } from 'reselect';
+
+const selectGlobal = () => (state) => state.get('global');
+
+const selectLoading = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.get('loading')
+);
+
+const selectError = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.get('error')
+);
+
+const selectData = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.get('data').toJS()
+);
+
+const selectConfig = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.get('config').toJS()
+);
+
 // selectLocationState expects a plain JS object for the routing state
 const selectLocationState = () => {
   let prevRoutingState;
@@ -16,5 +40,9 @@ const selectLocationState = () => {
 };
 
 export {
+  selectLoading,
+  selectError,
+  selectData,
+  selectConfig,
   selectLocationState,
 };

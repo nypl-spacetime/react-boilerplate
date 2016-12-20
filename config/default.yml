@@ -1,1 +1,2 @@
-production: false
+s3Url: http://s3.amazonaws.com/spacetime-nypl-org/datasets/
+dataset: mapwarper
