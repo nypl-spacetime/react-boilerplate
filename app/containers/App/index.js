@@ -1,35 +1,37 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
 import {
-  loadData,
-} from '../App/actions';
+  loadData
+} from '../App/actions'
 
 class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
-  static propTypes = {
-    children: React.PropTypes.node,
-    loadData: React.PropTypes.func,
-  };
-
-  componentWillMount() {
-    this.props.loadData();
+  static get propTypes () {
+    return {
+      children: React.PropTypes.node,
+      loadData: React.PropTypes.func
+    }
   }
 
-  render() {
+  componentWillMount () {
+    this.props.loadData()
+  }
+
+  render () {
     return (
       <div>
         {React.Children.toArray(this.props.children)}
       </div>
-    );
+    )
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     loadData: () => dispatch(loadData()),
-    dispatch,
-  };
+    dispatch
+  }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App)

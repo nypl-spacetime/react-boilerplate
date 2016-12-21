@@ -1,25 +1,25 @@
 import {
   LOAD_DATA,
   LOAD_DATA_SUCCESS,
-  LOAD_DATA_ERROR,
-} from './constants';
+  LOAD_DATA_ERROR
+} from './constants'
 
-export function loadData() {
+export function loadData () {
   return {
-    type: LOAD_DATA,
-  };
+    type: LOAD_DATA
+  }
 }
 
-export function dataLoaded(data) {
+export function dataLoaded (data) {
   return {
     type: LOAD_DATA_SUCCESS,
-    data,
-  };
+    data
+  }
 }
 
-export function dataLoadingError(error) {
+export function dataLoadingError (error) {
   return {
     type: LOAD_DATA_ERROR,
-    error,
-  };
+    error
+  }
 }

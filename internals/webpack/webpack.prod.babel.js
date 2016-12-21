@@ -1,21 +1,21 @@
 // Important modules this config uses
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 // Config
-const config = require('config');
+const config = require('config')
 
 module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff
   entry: [
-    path.join(process.cwd(), 'app/app.js'),
+    path.join(process.cwd(), 'app/app.js')
   ],
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
     filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].chunk.js',
+    chunkFilename: '[name].[chunkhash].chunk.js'
   },
 
   plugins: [
@@ -23,11 +23,11 @@ module.exports = require('./webpack.base.babel')({
       name: 'vendor',
       children: true,
       minChunks: 2,
-      async: true,
+      async: true
     }),
     new webpack.DefinePlugin({
       __CONFIG__: JSON.stringify(config),
-      __DEV__: false,
+      __DEV__: false
     }),
 
     // Merge all duplicate modules
@@ -46,10 +46,10 @@ module.exports = require('./webpack.base.babel')({
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true,
+        minifyURLs: true
       },
-      inject: true,
-    }),
+      inject: true
+    })
 
-  ],
-});
+  ]
+})
